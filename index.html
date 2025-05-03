@@ -1,1834 +1,488 @@
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NITRO SSM - Premium Creator Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        .style-0 {
-            cursor: auto;
-            min-height: 100%;
-            color: rgb(51, 51, 51);
-            background-color: rgb(255, 255, 255);
-            margin: 0px;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            line-height: 20px;
-            box-sizing: border-box;
+        :root {
+            --main-orange: #FF6600;
+            --accent-blue: #0073FF;
+            --dark-bg: #040604;
+            --pure-white: #FFFFFF;
+            --text-gray: #D8D5D5;
         }
 
-        .style-1 {
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scrollbar-width: thin;
+            scrollbar-color: var(--main-orange) var(--dark-bg);
         }
 
-        .style-2 {
+        /* Global Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+            border-radius: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--main-orange);
+            border-radius: 8px;
+            border: 3px solid var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff5500;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--pure-white);
+            overflow-x: hidden;
+            line-height: 1.7;
+	    position: realtive;
+        }
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(4,6,4,0.97) 0%,
+        rgba(4,6,4,0.92) 25%,
+        rgba(255,102,0,0.03) 50%,
+        rgba(4,6,4,0.92) 75%,
+        rgba(0,115,255,0.03) 100%
+    );
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--main-orange), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .neo-box {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            padding: 2rem;
+            margin: 1rem 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .neo-box:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.23);
+        }
+
+        .nav-container {
+            padding: 1rem 5%;
+            position: fixed;
             width: 100%;
-            max-width: 1140px;
-            background-color: rgb(0, 0, 0);
-            z-index: 5;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 20px;
-            background: rgb(0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;
-            position: relative;
-            box-sizing: border-box;
-        }
-
-        .style-3 {
-            width: 100%;
-            max-width: 940px;
-            margin-left: auto;
-            margin-right: auto;
-            box-sizing: border-box;
-        }
-
-        .style-4 {
-            justify-content: center;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(4,6,4,1);
+            display: flex;
             align-items: center;
-            display: flex;
-            position: relative;
-            box-sizing: border-box;
+            height: 80px;
         }
 
-        .style-5 {
-            z-index: 5;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            display: flex;
-            position: absolute;
-            float: none;
-            color: rgb(51, 51, 51);
-            text-decoration: none solid rgb(51, 51, 51);
-            box-sizing: border-box;
-            background-color: rgba(0, 0, 0, 0);
+        .logo {
+            height: 110px;
+            width: auto;
         }
 
-        .style-6 {
-            margin-top: 100px;
-            max-width: 100%;
-            vertical-align: middle;
-            display: block;
-            box-sizing: border-box;
-            border: 0px none rgb(51, 51, 51);
+        .hero-section {
+            margin-top: 80px;
+            padding: 2rem 5% 4rem;
         }
 
-        .style-7 {
-            width: 100%;
-            float: right;
-            position: relative;
-            box-sizing: border-box;
-            display: block;
+        @media (max-width: 768px) {
+            .nav-container {
+                height: 60px;
+            }
+            .logo {
+                height: 40px;
+            }
+            .hero-section {
+                margin-top: 60px;
+            }
+            
+            .challenges-grid::-webkit-scrollbar {
+                display: block;
+                height: 6px;
+            }
+
+            .challenges-grid::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 3px;
+            }
+
+            .challenges-grid::-webkit-scrollbar-thumb {
+                background: var(--main-orange);
+                border-radius: 3px;
+            }
         }
 
-        .style-8 {
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0px;
-            font-family: Exo, sans-serif;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-9 {
-            -webkit-user-select: text;
-            float: right;
-            cursor: pointer;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            user-select: text;
-            padding: 18px;
-            font-size: 24px;
-            display: none;
-            position: relative;
-            box-sizing: border-box;
-        }
-
-        .style-10 {
-            box-sizing: border-box;
-            speak: none;
-            font-variant: normal;
-            text-transform: none;
-            -webkit-font-smoothing: antialiased;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 24px;
-            font-family: webflow-icons;
-        }
-
-        .style-11 {
-            width: 100%;
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0px;
-            right: 0px;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        .style-12 {
-            background-color: rgb(0, 0, 0);
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            padding: 80px 30px;
-            position: relative;
-            box-sizing: border-box;
-            display: block;
-        }
-
-        .style-13 {
-            width: 100%;
-            max-width: 940px;
-            margin-left: auto;
-            margin-right: auto;
-            box-sizing: border-box;
-        }
-
-        .style-14 {
-            justify-content: space-between;
-            align-items: center;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-15 {
-            max-width: 46%;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-16 {
-            color: rgb(255, 145, 0);
-            font-size: 37px;
-            margin-top: 20px;
-            line-height: 44px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            box-sizing: border-box;
-            margin: 20px 0px 10px;
-        }
-
-        .style-17 {
-            font-family: Exo, sans-serif;
-            box-sizing: border-box;
-            font-weight: 700;
-        }
-
-        .style-18 {
-            box-sizing: border-box;
-        }
-
-        .style-19 {
-            color: rgb(255, 255, 255);
-            margin-bottom: 24px;
-            font-family: Exo, sans-serif;
-            margin-top: 0px;
-            box-sizing: border-box;
-        }
-
-        .style-20 {
-            color: rgb(255, 255, 255);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background-color: rgb(255, 102, 0);
-            padding: 12px 25px;
-            font-family: Exo, sans-serif;
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 900;
-            line-height: 20px;
-            transition: all 0.2s ease 0s;
-            cursor: pointer;
-            border: 0px none rgb(255, 255, 255);
-            border-radius: 0px;
-            text-decoration: none solid rgb(255, 255, 255);
-            display: block;
-            box-sizing: border-box;
-        }
-
-        .style-21 {
-            max-width: 46%;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-22 {
-            box-shadow: rgba(150, 163, 181, 0.08) 0px 4px 24px 0px;
-            max-width: 100%;
-            vertical-align: middle;
-            display: block;
-            box-sizing: border-box;
-            border: 0px none rgb(51, 51, 51);
-        }
-
-        .style-23 {
-            background-color: rgb(0, 0, 0);
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            margin-top: -1px;
-            padding: 80px 30px 0px;
-            position: relative;
-            box-sizing: border-box;
-            display: block;
-        }
-
-        .style-24 {
-            width: 100%;
-            max-width: 940px;
-            margin-top: -2px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-bottom: 20px;
-            box-sizing: border-box;
-        }
-
-        .style-25 {
-            text-align: center;
-            margin-bottom: 16px;
-            font-size: 30px;
-            margin-top: 20px;
-            line-height: 36px;
-            font-weight: 700;
-            box-sizing: border-box;
-        }
-
-        .style-26 {
-            color: rgb(0, 115, 255);
-            background-color: rgba(0, 0, 0, 0);
-            font-family: Exo, sans-serif;
-            font-weight: 600;
-            box-sizing: border-box;
-        }
-
-        .style-27 {
-            gap: 42px 64px;
-            grid-template-rows: auto auto;
-            grid-template-columns: 270.663px 270.663px 270.675px;
-            grid-auto-columns: 1fr;
-            margin-top: 50px;
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            box-sizing: border-box;
-        }
-
-        .style-28 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            text-align: center;
-            flex-direction: column;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
-            font-size: 14px;
-            line-height: 22px;
-            display: flex;
-            box-sizing: border-box;
         }
 
-        .style-29 {
-            color: rgb(255, 111, 0);
-            margin-bottom: 6px;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 32px;
-            box-sizing: border-box;
-        }
-
-        .style-30 {
-            color: rgb(255, 255, 255);
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-31 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-            font-size: 14px;
-            line-height: 22px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-32 {
-            color: rgb(255, 111, 0);
-            margin-bottom: 6px;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 32px;
-            box-sizing: border-box;
-        }
-
-        .style-33 {
-            color: rgb(255, 255, 255);
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-34 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-            font-size: 14px;
-            line-height: 22px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-35 {
-            color: rgb(255, 111, 0);
-            margin-bottom: 6px;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 32px;
-            box-sizing: border-box;
-        }
-
-        .style-36 {
-            color: rgb(255, 255, 255);
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-37 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-            font-size: 14px;
-            line-height: 22px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-38 {
-            color: rgb(255, 111, 0);
-            margin-bottom: 6px;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 32px;
-            box-sizing: border-box;
-        }
-
-        .style-39 {
-            color: rgb(255, 255, 255);
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-40 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-            font-size: 14px;
-            line-height: 22px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-41 {
-            color: rgb(0, 115, 255);
-            font-size: 20px;
-            box-sizing: border-box;
-        }
-
-        .style-42 {
-            color: rgb(255, 255, 255);
-            padding-top: 15px;
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-43 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-            font-size: 14px;
-            line-height: 22px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-44 {
-            color: rgb(255, 111, 0);
-            margin-bottom: 6px;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 32px;
-            box-sizing: border-box;
-        }
-
-        .style-45 {
-            color: rgb(255, 255, 255);
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-46 {
-            background-color: rgb(0, 0, 0);
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            margin-top: -1px;
-            padding: 0px 30px;
-            display: flex;
-            position: relative;
-            box-sizing: border-box;
-        }
-
-        .style-47 {
-            width: 100%;
-            max-width: 940px;
-            margin-top: -2px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-bottom: 20px;
-            box-sizing: border-box;
-        }
-
-        .style-48 {
-            gap: 56px 64px;
-            grid-template-rows: auto;
-            grid-template-columns: 270.663px 270.663px 270.675px;
-            grid-auto-columns: 1fr;
-            margin-top: 50px;
-            display: grid;
-            box-sizing: border-box;
-        }
-
-        .style-49 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-            font-size: 14px;
-            line-height: 22px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-50 {
-            color: rgb(255, 111, 0);
-            margin-bottom: 6px;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 32px;
-            box-sizing: border-box;
-        }
-
-        .style-51 {
-            color: rgb(255, 255, 255);
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-52 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-            font-size: 14px;
-            line-height: 22px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-53 {
-            color: rgb(255, 111, 0);
-            margin-bottom: 6px;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 32px;
-            box-sizing: border-box;
-        }
-
-        .style-54 {
-            color: rgb(255, 255, 255);
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-55 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-            font-size: 14px;
-            line-height: 22px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-56 {
-            color: rgb(255, 111, 0);
-            margin-bottom: 6px;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 32px;
-            box-sizing: border-box;
-        }
-
-        .style-57 {
-            color: rgb(255, 255, 255);
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-58 {
-            background-color: rgb(0, 0, 0);
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            margin-top: -1px;
-            padding: 140px 30px 60px;
-            position: relative;
-            box-sizing: border-box;
-            display: block;
-        }
-
-        .style-59 {
-            width: 100%;
-            max-width: 940px;
-            margin-top: -2px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-bottom: 20px;
-            box-sizing: border-box;
-        }
-
-        .style-60 {
-            justify-content: space-around;
-            align-items: center;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-61 {
-            text-align: center;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-62 {
-            color: rgb(255, 102, 0);
-            background-color: rgba(0, 0, 0, 0);
-            margin-bottom: 8px;
-            font-size: 40px;
-            font-weight: 600;
-            line-height: 48px;
-            box-sizing: border-box;
-        }
-
-        .style-63 {
-            color: rgb(0, 115, 255);
-            box-sizing: border-box;
-        }
-
-        .style-64 {
-            box-sizing: border-box;
-        }
-
-        .style-65 {
-            text-align: center;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-66 {
-            color: rgb(255, 102, 0);
-            background-color: rgba(0, 0, 0, 0);
-            margin-bottom: 8px;
-            font-size: 40px;
-            font-weight: 600;
-            line-height: 48px;
-            box-sizing: border-box;
-        }
-
-        .style-67 {
-            color: rgb(0, 115, 255);
-            box-sizing: border-box;
-        }
-
-        .style-68 {
-            box-sizing: border-box;
-        }
-
-        .style-69 {
-            text-align: center;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-70 {
-            color: rgb(255, 102, 0);
-            background-color: rgba(0, 0, 0, 0);
-            margin-bottom: 8px;
-            font-size: 40px;
-            font-weight: 600;
-            line-height: 48px;
-            box-sizing: border-box;
-        }
-
-        .style-71 {
-            color: rgb(0, 115, 255);
-            box-sizing: border-box;
-        }
-
-        .style-72 {
-            box-sizing: border-box;
-        }
-
-        .style-73 {
-            text-align: center;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-74 {
-            color: rgb(255, 102, 0);
-            background-color: rgba(0, 0, 0, 0);
-            margin-bottom: 8px;
-            font-size: 40px;
-            font-weight: 600;
-            line-height: 48px;
-            box-sizing: border-box;
-        }
-
-        .style-75 {
-            color: rgb(0, 115, 255);
-            box-sizing: border-box;
-        }
-
-        .style-76 {
-            background-color: rgb(0, 0, 0);
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            margin-top: -1px;
-            margin-bottom: -1px;
-            padding: 80px 30px;
-            position: relative;
-            box-sizing: border-box;
-            display: block;
-        }
-
-        .style-77 {
-            width: 100%;
-            max-width: 940px;
-            margin-top: -2px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-bottom: 20px;
-            box-sizing: border-box;
-        }
-
-        .style-78 {
-            color: rgb(255, 166, 0);
-            text-align: center;
-            margin-bottom: 16px;
-            margin-top: 20px;
-            font-size: 32px;
-            line-height: 36px;
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 2rem;
             font-weight: 700;
-            box-sizing: border-box;
         }
 
-        .style-79 {
-            max-width: 530px;
-            color: rgb(255, 255, 255);
-            text-align: center;
-            -webkit-text-stroke-color: rgb(255, 255, 255);
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
         }
 
-        .style-80 {
+        .hero-image img {
+            width: 100%;
+            max-width: 480px;
             height: auto;
-            max-width: 800px;
-            background-color: rgba(0, 0, 0, 0);
-            margin-top: 50px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            clear: both;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            background: rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;
-            position: relative;
-            box-sizing: border-box;
+            animation: float 4s ease-in-out infinite;
+            border-radius: 24px;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.12);
         }
 
-        .style-81 {
-            z-index: 1;
-            height: 242px;
-            white-space: nowrap;
-            display: block;
-            position: relative;
-            left: 0px;
-            right: 0px;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        .style-82 {
-            transform: translateX(0px);
-            opacity: 1;
-            opacity: 1;
-            max-width: 48%;
-            margin-right: 32px;
-            vertical-align: top;
-            width: 100%;
-            height: 242px;
-            white-space: normal;
-            text-align: left;
+        .cta-button {
             display: inline-block;
-            position: relative;
-            box-sizing: border-box;
-        }
-
-        .style-83 {
-            background-color: rgb(255, 255, 255);
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 24px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-84 {
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-85 {
-            align-self: stretch;
-            align-items: center;
-            margin-top: 24px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-86 {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-right: 16px;
-            max-width: 100%;
-            vertical-align: middle;
-            display: block;
-            box-sizing: border-box;
-            border: 0px none rgb(51, 51, 51);
-        }
-
-        .style-87 {
-            box-sizing: border-box;
-        }
-
-        .style-88 {
-            margin-bottom: 2px;
-            margin-top: 20px;
-            font-size: 24px;
-            line-height: 30px;
-            font-weight: 700;
-            box-sizing: border-box;
-        }
-
-        .style-89 {
-            flex: 1 1 0%;
-            justify-content: flex-end;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-90 {
-            max-width: 100%;
-            vertical-align: middle;
-            display: block;
-            box-sizing: border-box;
-            border: 0px none rgb(51, 51, 51);
-        }
-
-        .style-91 {
-            transform: translateX(0px);
-            opacity: 1;
-            opacity: 1;
-            max-width: 48%;
-            margin-right: 32px;
-            vertical-align: top;
-            width: 100%;
-            height: 242px;
-            white-space: normal;
-            text-align: left;
-            display: inline-block;
-            position: relative;
-            box-sizing: border-box;
-        }
-
-        .style-92 {
-            background-color: rgb(255, 255, 255);
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 24px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-93 {
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-94 {
-            align-self: stretch;
-            align-items: center;
-            margin-top: 24px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-95 {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-right: 16px;
-            max-width: 100%;
-            vertical-align: middle;
-            display: block;
-            box-sizing: border-box;
-            border: 0px none rgb(51, 51, 51);
-        }
-
-        .style-96 {
-            box-sizing: border-box;
-        }
-
-        .style-97 {
-            margin-bottom: 2px;
-            margin-top: 20px;
-            font-size: 24px;
-            line-height: 30px;
-            font-weight: 700;
-            box-sizing: border-box;
-        }
-
-        .style-98 {
-            flex: 1 1 0%;
-            justify-content: flex-end;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-99 {
-            max-width: 100%;
-            vertical-align: middle;
-            display: block;
-            box-sizing: border-box;
-            border: 0px none rgb(51, 51, 51);
-        }
-
-        .style-100 {
-            transform: translateX(0px);
-            opacity: 1;
-            opacity: 1;
-            max-width: 48%;
-            margin-right: 32px;
-            vertical-align: top;
-            width: 100%;
-            height: 200px;
-            white-space: normal;
-            text-align: left;
-            display: inline-block;
-            position: relative;
-            box-sizing: border-box;
-        }
-
-        .style-101 {
-            background-color: rgb(255, 255, 255);
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 24px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-102 {
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-103 {
-            align-self: stretch;
-            align-items: center;
-            margin-top: 24px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-104 {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-right: 16px;
-            max-width: 100%;
-            vertical-align: middle;
-            display: block;
-            box-sizing: border-box;
-            border: 0px none rgb(51, 51, 51);
-        }
-
-        .style-105 {
-            box-sizing: border-box;
-        }
-
-        .style-106 {
-            margin-bottom: 2px;
-            margin-top: 20px;
-            font-size: 24px;
-            line-height: 30px;
-            font-weight: 700;
-            box-sizing: border-box;
-        }
-
-        .style-107 {
-            margin-bottom: 10px;
-            font-size: 12px;
-            line-height: 16px;
-            box-sizing: border-box;
-        }
-
-        .style-108 {
-            flex: 1 1 0%;
-            justify-content: flex-end;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-109 {
-            max-width: 100%;
-            vertical-align: middle;
-            display: block;
-            box-sizing: border-box;
-            border: 0px none rgb(51, 51, 51);
-        }
-
-        .style-110 {
-            transform: translateX(0px);
-            opacity: 1;
-            opacity: 1;
-            max-width: 48%;
-            margin-right: 32px;
-            vertical-align: top;
-            width: 100%;
-            height: 200px;
-            white-space: normal;
-            text-align: left;
-            display: inline-block;
-            position: relative;
-            box-sizing: border-box;
-        }
-
-        .style-111 {
-            background-color: rgb(255, 255, 255);
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 24px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-112 {
-            margin-top: 0px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .style-113 {
-            align-self: stretch;
-            align-items: center;
-            margin-top: 24px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-114 {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-right: 16px;
-            max-width: 100%;
-            vertical-align: middle;
-            display: block;
-            box-sizing: border-box;
-            border: 0px none rgb(51, 51, 51);
-        }
-
-        .style-115 {
-            box-sizing: border-box;
-        }
-
-        .style-116 {
-            margin-bottom: 2px;
-            margin-top: 20px;
-            font-size: 24px;
-            line-height: 30px;
-            font-weight: 700;
-            box-sizing: border-box;
-        }
-
-        .style-117 {
-            margin-bottom: 10px;
-            font-size: 12px;
-            line-height: 16px;
-            box-sizing: border-box;
-        }
-
-        .style-118 {
-            flex: 1 1 0%;
-            justify-content: flex-end;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-119 {
-            max-width: 100%;
-            vertical-align: middle;
-            display: block;
-            box-sizing: border-box;
-            border: 0px none rgb(51, 51, 51);
-        }
-
-        .style-120 {
-            clip: rect(0px, 0px, 0px, 0px);
-            height: 1px;
-            width: 1px;
-            border: 0px none rgb(51, 51, 51);
-            margin: -1px;
-            padding: 0px;
-            position: absolute;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        .style-121 {
-            display: none;
-            width: 40px;
-            justify-content: center;
-            align-items: center;
-            left: -70px;
-            z-index: 3;
-            right: auto;
-            cursor: pointer;
-            color: rgb(255, 255, 255);
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            user-select: none;
-            margin: auto;
-            font-size: 40px;
-            position: absolute;
-            inset: 0px auto 0px -70px;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        .style-122 {
-            box-sizing: border-box;
-        }
-
-        .style-123 {
-            color: rgb(26, 27, 31);
-            max-width: 100%;
-            vertical-align: middle;
-            display: inline-block;
-            box-sizing: border-box;
-            border: 0px none rgb(26, 27, 31);
-        }
-
-        .style-124 {
-            width: 40px;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            right: -70px;
-            z-index: 4;
-            left: auto;
-            cursor: pointer;
-            color: rgb(255, 255, 255);
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            user-select: none;
-            margin: auto;
-            font-size: 40px;
-            position: absolute;
-            inset: 0px -70px 0px 830px;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        .style-125 {
-            box-sizing: border-box;
-        }
-
-        .style-126 {
-            color: rgb(26, 27, 31);
-            max-width: 100%;
-            vertical-align: middle;
-            display: inline-block;
-            box-sizing: border-box;
-            border: 0px none rgb(26, 27, 31);
-        }
-
-        .style-127 {
-            display: none;
-            z-index: 2;
-            height: 40px;
-            text-align: center;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            margin: auto;
-            padding-top: 10px;
-            position: absolute;
-            inset: auto 0px 0px;
-            box-sizing: border-box;
-        }
-
-        .style-128 {
-            margin-left: 3px;
-            margin-right: 3px;
-            margin-right: 3px;
-            background-color: rgb(255, 255, 255);
-            width: 1em;
-            height: 14px;
-            cursor: pointer;
-            transition: background-color 0.1s ease 0s, color 0.1s ease 0s;
-            display: inline-block;
-            position: relative;
-            border-radius: 100%;
-            box-sizing: border-box;
-        }
-
-        .style-129 {
-            margin-left: 3px;
-            margin-right: 3px;
-            margin-right: 3px;
-            width: 1em;
-            height: 14px;
-            cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.4);
-            transition: background-color 0.1s ease 0s, color 0.1s ease 0s;
-            display: inline-block;
-            position: relative;
-            border-radius: 100%;
-            box-sizing: border-box;
-        }
-
-        .style-130 {
-            background-color: rgb(0, 0, 0);
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            margin-top: -1px;
-            padding: 80px 30px;
-            position: relative;
-            box-sizing: border-box;
-            display: block;
-        }
-
-        .style-131 {
-            width: 100%;
-            max-width: 940px;
-            margin-left: auto;
-            margin-right: auto;
-            box-sizing: border-box;
-        }
-
-        .style-132 {
-            color: rgb(255, 157, 0);
-            text-align: center;
-            margin-bottom: 16px;
-            margin-top: 20px;
-            font-size: 32px;
-            line-height: 36px;
-            font-weight: 700;
-            box-sizing: border-box;
-        }
-
-        .style-133 {
-            flex-direction: column;
-            margin-top: 50px;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-134 {
-            gap: 0px;
-            background-color: rgb(0, 115, 255);
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            grid-template-rows: auto;
-            grid-template-columns: 470px 470px;
-            grid-auto-columns: 1fr;
-            padding-top: 24px;
-            padding-bottom: 24px;
-            display: grid;
-            box-sizing: border-box;
-        }
-
-        .style-135 {
-            color: rgb(255, 255, 255);
-            margin-bottom: 0px;
-            margin-left: 24px;
-            margin-top: 20px;
-            font-size: 24px;
-            line-height: 30px;
-            font-weight: 700;
-            box-sizing: border-box;
-        }
-
-        .style-136 {
-            color: rgb(255, 255, 255);
-            margin-bottom: 0px;
-            margin-left: 24px;
-            margin-top: 20px;
-            font-size: 24px;
-            line-height: 30px;
-            font-weight: 700;
-            box-sizing: border-box;
-        }
-
-        .style-137 {
-            gap: 0px;
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            grid-template-rows: auto;
-            grid-template-columns: 470px 470px;
-            grid-auto-columns: 1fr;
-            padding-top: 24px;
-            padding-bottom: 24px;
-            display: grid;
-            box-sizing: border-box;
-        }
-
-        .style-138 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            color: rgb(255, 255, 255);
-            background-image: none;
-            background-position: 0% 50%;
-            background-repeat: no-repeat;
-            background-size: auto;
-            margin-left: 24px;
-            padding-left: 40px;
-            box-sizing: border-box;
-        }
-
-        .style-139 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            color: rgb(255, 255, 255);
-            background-image: none;
-            background-position: 0% 50%;
-            background-repeat: no-repeat;
-            background-size: auto;
-            margin-left: 24px;
-            padding-left: 40px;
-            box-sizing: border-box;
-        }
-
-        .style-140 {
-            gap: 0px;
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            grid-template-rows: auto;
-            grid-template-columns: 470px 470px;
-            grid-auto-columns: 1fr;
-            padding-top: 24px;
-            padding-bottom: 24px;
-            display: grid;
-            box-sizing: border-box;
-        }
-
-        .style-141 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            color: rgb(255, 255, 255);
-            background-image: none;
-            background-position: 0% 50%;
-            background-repeat: no-repeat;
-            background-size: auto;
-            margin-left: 24px;
-            padding-left: 40px;
-            box-sizing: border-box;
-        }
-
-        .style-142 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            color: rgb(255, 255, 255);
-            background-image: none;
-            background-position: 0% 50%;
-            background-repeat: no-repeat;
-            background-size: auto;
-            margin-left: 24px;
-            padding-left: 40px;
-            box-sizing: border-box;
-        }
-
-        .style-143 {
-            gap: 0px;
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            grid-template-rows: auto;
-            grid-template-columns: 470px 470px;
-            grid-auto-columns: 1fr;
-            padding-top: 24px;
-            padding-bottom: 24px;
-            display: grid;
-            box-sizing: border-box;
-        }
-
-        .style-144 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            color: rgb(255, 255, 255);
-            background-image: none;
-            background-position: 0% 50%;
-            background-repeat: no-repeat;
-            background-size: auto;
-            margin-left: 24px;
-            padding-left: 40px;
-            box-sizing: border-box;
-        }
-
-        .style-145 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            color: rgb(255, 255, 255);
-            background-image: none;
-            background-position: 0% 50%;
-            background-repeat: no-repeat;
-            background-size: auto;
-            margin-left: 24px;
-            padding-left: 40px;
-            box-sizing: border-box;
-        }
-
-        .style-146 {
-            gap: 0px;
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            grid-template-rows: auto;
-            grid-template-columns: 470px 470px;
-            grid-auto-columns: 1fr;
-            padding-top: 24px;
-            padding-bottom: 24px;
-            display: grid;
-            box-sizing: border-box;
-        }
-
-        .style-147 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            color: rgb(255, 255, 255);
-            background-image: none;
-            background-position: 0% 50%;
-            background-repeat: no-repeat;
-            background-size: auto;
-            margin-left: 24px;
-            padding-left: 40px;
-            box-sizing: border-box;
-        }
-
-        .style-148 {
-            grid-area: span 1 / span 1 / span 1 / span 1;
-            color: rgb(255, 255, 255);
-            background-image: none;
-            background-position: 0% 50%;
-            background-repeat: no-repeat;
-            background-size: auto;
-            margin-left: 24px;
-            padding-left: 40px;
-            box-sizing: border-box;
-        }
-
-        .style-149 {
-            background-color: rgb(0, 0, 0);
-            border-bottom: 0.8px solid rgb(228, 235, 243);
-            margin-top: -1px;
-            padding: 80px 30px;
-            position: relative;
-            box-sizing: border-box;
-            display: block;
-        }
-
-        .style-150 {
-            width: 100%;
-            max-width: 940px;
-            margin-left: auto;
-            margin-right: auto;
-            box-sizing: border-box;
-        }
-
-        .style-151 {
-            max-width: 750px;
-            text-align: center;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            box-sizing: border-box;
-        }
-
-        .style-152 {
-            color: rgb(255, 255, 255);
-            margin-top: 20px;
-            font-size: 38px;
-            line-height: 44px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            box-sizing: border-box;
-            margin: 20px 0px 10px;
-        }
-
-        .style-153 {
-            color: rgb(216, 213, 213);
-            margin-bottom: 24px;
-            margin-top: 0px;
-            box-sizing: border-box;
-        }
-
-        .style-154 {
-            color: rgb(255, 255, 255);
-            letter-spacing: 2px;
+            padding: 1rem 2.5rem;
+            background: var(--main-orange);
+            color: var(--pure-white);
             text-transform: uppercase;
-            background-color: rgb(255, 102, 0);
-            padding: 12px 25px;
-            font-family: Exo, sans-serif;
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 900;
-            line-height: 20px;
-            transition: all 0.2s ease 0s;
-            cursor: pointer;
-            border: 0px none rgb(255, 255, 255);
-            border-radius: 0px;
-            text-decoration: none solid rgb(255, 255, 255);
-            display: block;
-            box-sizing: border-box;
+            letter-spacing: 2px;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(.4,2,.55,.44);
+            text-decoration: none;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .style-155 {
-            background-color: rgb(0, 0, 0);
-            margin-top: -154px;
-            box-sizing: border-box;
-            display: block;
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(255,102,0,0.3);
+        }
+
+        .content-section {
+            padding: 2rem 5% !important;
+        }
+
+        .section-heading {
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 5%;
+            margin-bottom: -1rem;
+        }
+
+        @media (max-width: 768px) {
+            .challenges-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding: 1rem 5% 2rem;
+                scroll-padding: 0 5%;
+            }
+
+            .challenges-grid::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 40px;
+                background: linear-gradient(90deg, rgba(4,6,4,0) 0%, var(--dark-bg) 100%);
+                pointer-events: none;
+            }
+
+            .challenge-card {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+                min-width: 85vw;
+                margin-right: 1.5rem;
+                transform-origin: center;
+                transition: transform 0.3s ease;
+            }
+
+            .challenge-card:active {
+                transform: scale(0.98);
+            }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            padding: 2rem 0 !important;
+        }
+
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--main-orange), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid .neo-box:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 4rem 0;
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            flex: 0 0 80%;
+            scroll-snap-align: start;
+            padding: 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            min-width: 320px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .author-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.11);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+            font-size: 1rem;
+            background: rgba(4,6,4,0.97);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-  </head>
-  <body class="style-0" style="background-color: #040604;"><span style="font-family: Microsoft Tai Le;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+</head>
+<body>
+    <nav class="nav-container">
+        <img class="logo" 
+             src="https://drive.google.com/thumbnail?id=1Emnk79HUkQZ84UhZYol6HVCmCvRHuuN8&sz=w1000" 
+             alt="Nitro Creator Management">
+    </nav>
 
-      style="font-family: Microsoft Tai Le;"> </span>
-    <section class="style-12">
-      <div class="style-13">
-        <div class="style-14">
-          <div class="style-15">
-            <h1 class="style-16"><span style="font-family: Microsoft Tai Le;"><strong
-
-                  class="style-17">Welco</strong></span><span style="font-family: Microsoft Tai Le;"><strong
-
-                  class="style-17">me to NITRO <span style="color: #0073ff;">SSM</span>
-                  <br class="style-18">
-                  Ignite Your Success!</strong></span></h1>
-            <p class="style-19"><span style="font-family: Microsoft Tai Le;">Empowering
-                Models, Igniting Success: Unleashing the Full Potential</span><span
-
-                style="font-family: Microsoft Tai Le;"></span><img src="https://drive.google.com/uc?export=view&id=1Emnk79HUkQZ84UhZYol6HVCmCvRHuuN8"
-
-                alt="" longdesc="color%20logo%20hd%20transparent.png" style="width: 153px; height: 153px;"></p>
-            <span style="font-family: Microsoft Tai Le;"><a href="http://www.instagram.com/bethenitro"
-
-                class="style-20">Get Started</a></span> </div>
-          <div class="style-21"><span style="font-family: Microsoft Tai Le;"><img
-
-                src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657c4f101c7e51807bc63574_4886674-01.png"
-
-                loading="lazy" sizes="(max-width: 767px) 94vw, (max-width: 991px) 62vw, (max-width: 1439px) 43vw, 432.3999938964844px"
-
-                alt="" srcset="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657c4f101c7e51807bc63574_4886674-01-p-500.png 500w, https://assets-global.website-files.com/657c4988cc0a767e248ed997/657c4f101c7e51807bc63574_4886674-01.png 750w"
-
-                class="style-22" width="478"></span></div>
-        </div>
-      </div>
-    </section>
-    <span style="font-family: Microsoft Tai Le;"> </span>
-    <section class="style-23">
-      <div class="style-24">
-        <h2 class="style-25"><span style="font-family: Microsoft Tai Le;"><strong
-
-              class="style-26">Let's be honest - for most of the models,
-              OnlyFans looks like this:</strong></span></h2>
-        <div class="style-27">
-          <div class="style-28">
-            <div class="style-29"><span style="font-family: Microsoft Tai Le;">Chatting</span></div>
-            <p class="style-30"><span style="font-family: Microsoft Tai Le;">No
-                experience or strategy; very time consuming &amp; not fun.</span></p>
-          </div>
-          <div class="style-31">
-            <div class="style-32"><span style="font-family: Microsoft Tai Le;">Promo</span></div>
-            <p class="style-33"><span style="font-family: Microsoft Tai Le;">Huge
-                time effort, but doesn't bring much fans; difficult to stay up
-                to date.</span></p>
-          </div>
-          <div class="style-34">
-            <div class="style-35"><span style="font-family: Microsoft Tai Le;">Anonymity</span></div>
-            <p class="style-36"><span style="font-family: Microsoft Tai Le;">Don't
-                want to show their face; afraid that family or friends see them.</span></p>
-          </div>
-          <div class="style-37">
-            <div class="style-38"><span style="font-family: Microsoft Tai Le;">Multiple
-                Platforms</span></div>
-            <p class="style-39"><span style="font-family: Microsoft Tai Le;">Would
-                be unthinkable, just OnlyFans requires hours per day.</span></p>
-          </div>
-          <div class="style-40">
-            <div class="style-41"><u><b><span style="font-family: Microsoft Tai Le;">Revenue</span></b></u></div>
-            <p class="style-42"><span style="font-family: Microsoft Tai Le;">Lower
-                than desired; does not grow fast enough.</span></p>
-          </div>
-          <div class="style-43">
-            <div class="style-44"><span style="font-family: Microsoft Tai Le;">(Shadow)
-                Bans</span></div>
-            <p class="style-45"><span style="font-family: Microsoft Tai Le;">TikTok
-                &amp; Instagram complicate the promo; don't know how to avoid
-                bans.</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <span style="font-family: Microsoft Tai Le;"> </span>
-    <section class="style-46">
-      <div class="style-47">
-        <div class="style-48">
-          <div class="style-49">
-            <div class="style-50"><span style="font-family: Microsoft Tai Le;">High
-                Competition</span></div>
-            <p class="style-51"><span style="font-family: Microsoft Tai Le;">standing
-                out from the crowd is unthinkable; no branding or uniqueness.</span></p>
-          </div>
-          <div class="style-52">
-            <div class="style-53"><span style="font-family: Microsoft Tai Le;">Work-Life-Balance</span></div>
-            <p class="style-54"><span style="font-family: Microsoft Tai Le;">Does
-                not exist</span></p>
-          </div>
-          <div class="style-55">
-            <div class="style-56"><span style="font-family: Microsoft Tai Le;">Strategy</span></div>
-            <p class="style-57"><span style="font-family: Microsoft Tai Le;">Don't
-                have one; if they have one its the same everyone is using.</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <span style="font-family: Microsoft Tai Le;"> </span>
-    <section class="style-58">
-      <div class="style-59">
-        <div class="style-60">
-          <div class="style-61">
-            <div class="style-62"><span style="font-family: Microsoft Tai Le;">150k</span></div>
-            <div class="style-63"><span style="font-family: Microsoft Tai Le;">Annual
-                revenue of <br class="style-64">
-                our best model</span></div>
-          </div>
-          <div class="style-65">
-            <div class="style-66"><span style="font-family: Microsoft Tai Le;">234%</span></div>
-            <div class="style-67"><span style="font-family: Microsoft Tai Le;">Increased
-                profit in<br class="style-68">
-                the first 3 months</span></div>
-          </div>
-          <div class="style-69">
-            <div class="style-70"><span style="font-family: Microsoft Tai Le;">4+</span></div>
-            <div class="style-71"><span style="font-family: Microsoft Tai Le;">Years
-                in the market<br class="style-72">
-                and still counting</span></div>
-          </div>
-          <div class="style-73">
-            <div class="style-74"><span style="font-family: Microsoft Tai Le;">15+</span></div>
-            <div class="style-75"><span style="font-family: Microsoft Tai Le;">Models
-                managed</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <span style="font-family: Microsoft Tai Le;"> </span>
-    <section class="style-76">
-      <div class="style-77">
-        <h2 class="style-78"><span style="font-family: Microsoft Tai Le;">Action
-            &gt; Words</span></h2>
-        <p class="style-79"><span style="font-family: Microsoft Tai Le;">Dive
-            into authentic testimonials at Nitro, where over 100 models share
-            their success stories, underscoring our position as a top-tier
-            OnlyFans management agency. Our adept team, specializing in
-            comprehensive OnlyFans services, ensures your triumph in content
-            creation and monetization. Hear directly from the models why Nitro
-            stands out in the OnlyFans community.</span></p>
-        <div data-delay="4000" data-animation="slide" class="style-80" data-autoplay="false"
-
-          data-easing="ease" data-hide-arrows="true" data-disable-swipe="false"
-
-          data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true"
-
-          role="region" aria-label="carousel">
-          <div class="style-81">
-            <div class="style-82" aria-label="1 of 4" role="group">
-              <div class="style-83">
-                <p class="style-84"><span style="font-family: Microsoft Tai Le;">Nitro
-                    SSM changed the game for me. It's not just about managing
-                    profiles; it's a genuine partnership. They've got this knack
-                    for making me feel like more than just a creator; Mia Marie
-                    at Nitro SSM is a journey, not just a job.</span></p>
-                <div class="style-85"><span style="font-family: Microsoft Tai Le;"><img
-
-                      src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e1ae263ba3262c30403_avatar.jpg"
-
-                      loading="lazy" sizes="(max-width: 479px) 19vw, 60px" srcset="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e1ae263ba3262c30403_avatar-p-500.jpg 500w, https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e1ae263ba3262c30403_avatar-p-800.jpg 800w, https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e1ae263ba3262c30403_avatar-p-1080.jpg 1080w, https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e1ae263ba3262c30403_avatar.jpg 1186w"
-
-                      alt="" class="style-86"></span>
-                  <div class="style-87">
-                    <h3 class="style-88"><span style="font-family: Microsoft Tai Le;">Mia
-                        Marie</span></h3>
-                  </div>
-                  <div class="style-89"><span style="font-family: Microsoft Tai Le;"><img
-
-                        src="https://assets-global.website-files.com/62434fa732124a0fb112aab4/62434fa732124a6c9412aae6_double-quotes-l.svg"
-
-                        loading="lazy" alt="" class="style-90"></span></div>
-                </div>
-              </div>
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Welcome to NITRO <span class="gradient-text">SSM</span><br>Elevate Your Digital Career!</h1>
+                <p>Strategic Growth Solutions for Modern Content Creators</p>
+                <a href="http://www.instagram.com/bethenitro" class="cta-button">Start Growing</a>
             </div>
-            <div class="style-91" aria-label="2 of 4" role="group">
-              <div class="style-92">
-                <p class="style-93"><span style="font-family: Microsoft Tai Le;">Nitro
-                    SSM is like having a digital family. They get me, understand
-                    my goals, and go above and beyond. Lisa Rossen isn't just
-                    managed; she's nurtured, and that makes all the difference.
-                    It's personal, and that's what sets Nitro SSM apart</span></p>
-                <div class="style-94"><span style="font-family: Microsoft Tai Le;"><img
-
-                      src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011.jpg"
-
-                      loading="lazy" sizes="(max-width: 479px) 19vw, 60px" srcset="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011-p-500.jpg 500w, https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011-p-800.jpg 800w, https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011-p-1080.jpg 1080w, https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011-p-1600.jpg 1600w, https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011-p-2000.jpg 2000w, https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011.jpg 2316w"
-
-                      alt="" class="style-95"></span>
-                  <div class="style-96">
-                    <h3 class="style-97"><span style="font-family: Microsoft Tai Le;">Lisa
-                        Rossen</span></h3>
-                  </div>
-                  <div class="style-98"><span style="font-family: Microsoft Tai Le;"><img
-
-                        src="https://assets-global.website-files.com/62434fa732124a0fb112aab4/62434fa732124a6c9412aae6_double-quotes-l.svg"
-
-                        loading="lazy" alt="" class="style-99"></span></div>
-                </div>
-              </div>
+            <div class="hero-image">
+                <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657c4f101c7e51807bc63574_4886674-01.png" 
+                     alt="Creator Collaboration">
             </div>
-            <div class="style-100" aria-label="3 of 4" role="group" aria-hidden="true">
-              <div class="style-101" aria-hidden="true">
-                <p aria-hidden="true" class="style-102"><span style="font-family: Microsoft Tai Le;">Lorem
-                    Ipsum is simply dummy text of the printing and typesetting
-                    industry.</span></p>
-                <div class="style-103" aria-hidden="true"><span style="font-family: Microsoft Tai Le;"><img
-
-                      src="https://assets-global.website-files.com/62434fa732124a0fb112aab4/62434fa732124a28a812aad9_placeholder%202.svg"
-
-                      loading="lazy" alt="" class="style-104" aria-hidden="true"></span>
-                  <div aria-hidden="true" class="style-105">
-                    <h3 class="style-106" aria-hidden="true"><span style="font-family: Microsoft Tai Le;">Profile
-                        name</span></h3>
-                    <div class="style-107" aria-hidden="true"><span style="font-family: Microsoft Tai Le;">CEO
-                        / Creative IT</span></div>
-                  </div>
-                  <div class="style-108" aria-hidden="true"><span style="font-family: Microsoft Tai Le;"><img
-
-                        src="https://assets-global.website-files.com/62434fa732124a0fb112aab4/62434fa732124a6c9412aae6_double-quotes-l.svg"
-
-                        loading="lazy" alt="" aria-hidden="true" class="style-109"></span></div>
-                </div>
-              </div>
-            </div>
-            <div class="style-110" aria-label="4 of 4" role="group" aria-hidden="true">
-              <div class="style-111" aria-hidden="true">
-                <p aria-hidden="true" class="style-112"><span style="font-family: Microsoft Tai Le;">Lorem
-                    Ipsum is simply dummy text of the printing and typesetting
-                    industry.</span></p>
-                <div class="style-113" aria-hidden="true"><span style="font-family: Microsoft Tai Le;"><img
-
-                      src="https://assets-global.website-files.com/62434fa732124a0fb112aab4/62434fa732124a28a812aad9_placeholder%202.svg"
-
-                      loading="lazy" alt="" class="style-114" aria-hidden="true"></span>
-                  <div aria-hidden="true" class="style-115">
-                    <h3 class="style-116" aria-hidden="true"><span style="font-family: Microsoft Tai Le;">Profile
-                        name</span></h3>
-                    <div class="style-117" aria-hidden="true"><span style="font-family: Microsoft Tai Le;">CEO
-                        / Creative IT</span></div>
-                  </div>
-                  <div class="style-118" aria-hidden="true"><span style="font-family: Microsoft Tai Le;"><img
-
-                        src="https://assets-global.website-files.com/62434fa732124a0fb112aab4/62434fa732124a6c9412aae6_double-quotes-l.svg"
-
-                        loading="lazy" alt="" aria-hidden="true" class="style-119"></span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="style-121" role="button" tabindex="0" aria-controls="w-slider-mask-0"
-
-            aria-label="previous slide">
-            <div class="style-122"><span style="font-family: Microsoft Tai Le;"><img
-
-                  src="https://assets-global.website-files.com/62434fa732124a0fb112aab4/62434fa732124a0e4912aadb_Chevron%20right-1.svg"
-
-                  loading="lazy" alt="" class="style-123"></span></div>
-          </div>
-          <div class="style-124" role="button" tabindex="0" aria-controls="w-slider-mask-0"
-
-            aria-label="next slide">
-            <div class="style-125"><span style="font-family: Microsoft Tai Le;"><img
-
-                  src="https://assets-global.website-files.com/62434fa732124a0fb112aab4/62434fa732124a7ce212aacc_Chevron%20right.svg"
-
-                  loading="lazy" alt="" class="style-126"></span></div>
-          </div>
-          <div class="style-127"> </div>
         </div>
-      </div>
     </section>
-    <span style="font-family: Microsoft Tai Le;"> </span>
-    <section class="style-130">
-      <div class="style-131">
-        <h2 class="style-132"><span style="font-family: Microsoft Tai Le;">Why
-            Choose Nitro?</span></h2>
-        <div class="style-133">
-          <div class="style-134">
-            <h3 class="style-135"><span style="font-family: Microsoft Tai Le;">Other
-                Agencies</span></h3>
-            <h3 class="style-136"><span style="font-family: Microsoft Tai Le;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Nitro SSM</span></h3>
-          </div>
-          <div class="style-137">
-            <div class="style-138"><span style="font-family: Microsoft Tai Le;">Hidden
-                fees and high charges.</span></div>
-            <div class="style-139"><span style="font-family: Microsoft Tai Le;">Transparent
-                pricing with low, model-friendly costs.</span></div>
-          </div>
-          <div class="style-140">
-            <div class="style-141"><span style="font-family: Microsoft Tai Le;">Limited
-                support for individual aspirations.</span></div>
-            <div class="style-142"><span style="font-family: Microsoft Tai Le;">Prioritizing
-                models with personalized strategies and opportunities.</span></div>
-          </div>
-          <div class="style-143">
-            <div class="style-144"><span style="font-family: Microsoft Tai Le;">Insufficient
-                respect for your personal boundaries and privacy </span></div>
-            <div class="style-145"><span style="font-family: Microsoft Tai Le;">Unlock
-                exclusive brand partnerships and industry opportunities</span></div>
-          </div>
-          <div class="style-146">
-            <div class="style-147"><span style="font-family: Microsoft Tai Le;">Limited
-                industry connections.</span></div>
-            <div class="style-148"><span style="font-family: Microsoft Tai Le;">Expansive
-                network to amplify your online presence.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <span style="font-family: Microsoft Tai Le;"> </span>
-    <section class="style-149">
-      <div class="style-150">
-        <div class="style-151">
-          <h1 class="style-152"><span style="font-family: Microsoft Tai Le;">Apply
-              to join our family today</span></h1>
-          <p class="style-153"><span style="font-family: Microsoft Tai Le;">Join
-              our creator family today at Nitro SSM and unlock a world of
-              personalized growth. Your journey begins with us – apply now!</span></p>
-          <span style="font-family: Microsoft Tai Le;"><a href="http://www.instagram.com/bethenitro"
 
-              class="style-154">Get Started</a></span> </div>
-      </div>
+    <section class="content-section">
+        <h2 class="section-heading">Common Creator Challenges</h2>
+        <div class="challenges-grid">
+            <div class="neo-box challenge-card">
+                <h3>Audience Engagement</h3>
+                <p>Time-consuming interactions & community management</p>
+            </div>
+            <div class="neo-box challenge-card">
+                <h3>Content Strategy</h3>
+                <p>Developing unique positioning in competitive markets</p>
+            </div>
+            <div class="neo-box challenge-card">
+                <h3>Privacy Control</h3>
+                <p>Maintaining personal boundaries & security</p>
+            </div>
+            <div class="neo-box challenge-card">
+                <h3>Platform Management</h3>
+                <p>Juggling multiple channels effectively</p>
+            </div>
+            <div class="neo-box challenge-card">
+                <h3>Revenue Growth</h3>
+                <p>Optimizing monetization strategies</p>
+            </div>
+            <div class="neo-box challenge-card">
+                <h3>Algorithm Changes</h3>
+                <p>Adapting to platform updates & visibility shifts</p>
+            </div>
+            <div class="neo-box challenge-card">
+                <h3>Brand Identity</h3>
+                <p>Developing unique market positioning</p>
+            </div>
+            <div class="neo-box challenge-card">
+                <h3>Work-Life Balance</h3>
+                <p>Maintaining sustainable workflows</p>
+            </div>
+            <div class="neo-box challenge-card">
+                <h3>Content Protection</h3>
+                <p>Safeguarding exclusive material</p>
+            </div>
+        </div>
     </section>
-    <span style="font-family: Microsoft Tai Le;"> </span>
-    <section class="style-155"></section>
-    <span style="font-family: Microsoft Tai Le;">
-    </span>
-  </body>
+
+    <section class="content-section">
+        <div class="stats-grid">
+            <div class="neo-box">
+                <div class="stat-number">150K+</div>
+                <p>Monthly Engagements</p>
+            </div>
+            <div class="neo-box">
+                <div class="stat-number">234%</div>
+                <p>Average Growth</p>
+            </div>
+            <div class="neo-box">
+                <div class="stat-number">4+</div>
+                <p>Years Experience</p>
+            </div>
+            <div class="neo-box">
+                <div class="stat-number">50+</div>
+                <p>Creators Supported</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-heading">Success Stories</h2>
+        <div class="testimonial-carousel">
+            <div class="testimonial-card neo-box">
+                <p>"This platform helped me finally turn my content into a full-time income. My followers feel more connected than ever, and I don’t have to worry about the tech or strategy — it’s all handled."</p>
+                <div class="author-info">
+                    <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e1ae263ba3262c30403_avatar.jpg" 
+                         alt="Digital Creator">
+                    <h4>Mia Marie</h4>
+                </div>
+            </div>
+            <div class="testimonial-card neo-box">
+                <p>"It’s like having a whole team behind me. From scheduling to fan engagement, everything just works. And yes, the growth on my private content has been without having to mention it everywhere."</p>
+                <div class="author-info">
+                    <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011.jpg" 
+                         alt="Content Producer">
+                    <h4>Lisa Rossen</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-heading">Why Choose Nitro?</h2>
+        <div class="comparison-grid">
+            <div class="neo-box">
+                <h3>Traditional Management</h3>
+                <ul>
+                    <li>Generic strategies</li>
+                    <li>Limited platform support</li>
+                    <li>Privacy concerns</li>
+                    <li>Revenue complexity</li>
+                </ul>
+            </div>
+            <div class="neo-box" style="border: 2px solid var(--main-orange);">
+                <h3>Nitro SSM</h3>
+                <ul>
+                    <li>Tailored growth plans</li>
+                    <li>Multi-platform expertise</li>
+                    <li>Content protection</li>
+                    <li>Transparent analytics</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section final-cta">
+        <div class="neo-box">
+            <h2>Join Our Creator Network</h2>
+            <p>Elevate your digital career with strategic support</p>
+            <a href="http://www.instagram.com/bethenitro" class="cta-button">Apply Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 NITRO SSM. Empowering Digital Creators Worldwide.</p>
+    </footer>
+</body>
 </html>
