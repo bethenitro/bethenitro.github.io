@@ -6,7 +6,10 @@
     <title>NITRO SSM - Premium Creator Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
+        /* No visual changes here; WCAG improvements are in HTML content */
+        /* For brevity, CSS remains unchanged; in production, also ensure high contrast and adequate color pairing */
+
+	        :root {
             --main-orange: #FF6600;
             --accent-blue: #0073FF;
             --dark-bg: #040604;
@@ -344,144 +347,151 @@ body::before {
     </style>
 </head>
 <body>
-    <nav class="nav-container">
+    <nav class="nav-container" role="navigation" aria-label="Main Navigation">
         <img class="logo" 
              src="https://drive.google.com/thumbnail?id=1Emnk79HUkQZ84UhZYol6HVCmCvRHuuN8&sz=w1000" 
-             alt="Nitro Creator Management">
+             alt="Nitro Creator Management Logo">
     </nav>
 
-    <section class="hero-section">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Welcome to NITRO <span class="gradient-text">SSM</span><br>Elevate Your Digital Career!</h1>
-                <p>Strategic Growth Solutions for Modern Content Creators</p>
-                <a href="http://www.instagram.com/bethenitro" class="cta-button">Start Growing</a>
-            </div>
-            <div class="hero-image">
-                <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657c4f101c7e51807bc63574_4886674-01.png" 
-                     alt="Creator Collaboration">
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <h2 class="section-heading">Common Creator Challenges</h2>
-        <div class="challenges-grid">
-            <div class="neo-box challenge-card">
-                <h3>Audience Engagement</h3>
-                <p>Time-consuming interactions & community management</p>
-            </div>
-            <div class="neo-box challenge-card">
-                <h3>Content Strategy</h3>
-                <p>Developing unique positioning in competitive markets</p>
-            </div>
-            <div class="neo-box challenge-card">
-                <h3>Privacy Control</h3>
-                <p>Maintaining personal boundaries & security</p>
-            </div>
-            <div class="neo-box challenge-card">
-                <h3>Platform Management</h3>
-                <p>Juggling multiple channels effectively</p>
-            </div>
-            <div class="neo-box challenge-card">
-                <h3>Revenue Growth</h3>
-                <p>Optimizing monetization strategies</p>
-            </div>
-            <div class="neo-box challenge-card">
-                <h3>Algorithm Changes</h3>
-                <p>Adapting to platform updates & visibility shifts</p>
-            </div>
-            <div class="neo-box challenge-card">
-                <h3>Brand Identity</h3>
-                <p>Developing unique market positioning</p>
-            </div>
-            <div class="neo-box challenge-card">
-                <h3>Work-Life Balance</h3>
-                <p>Maintaining sustainable workflows</p>
-            </div>
-            <div class="neo-box challenge-card">
-                <h3>Content Protection</h3>
-                <p>Safeguarding exclusive material</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <div class="stats-grid">
-            <div class="neo-box">
-                <div class="stat-number">150K+</div>
-                <p>Monthly Engagements</p>
-            </div>
-            <div class="neo-box">
-                <div class="stat-number">234%</div>
-                <p>Average Growth</p>
-            </div>
-            <div class="neo-box">
-                <div class="stat-number">4+</div>
-                <p>Years Experience</p>
-            </div>
-            <div class="neo-box">
-                <div class="stat-number">50+</div>
-                <p>Creators Supported</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <h2 class="section-heading">Success Stories</h2>
-        <div class="testimonial-carousel">
-            <div class="testimonial-card neo-box">
-                <p>"This platform helped me finally turn my content into a full-time income. My followers feel more connected than ever, and I don’t have to worry about the tech or strategy — it’s all handled."</p>
-                <div class="author-info">
-                    <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e1ae263ba3262c30403_avatar.jpg" 
-                         alt="Digital Creator">
-                    <h4>Mia Marie</h4>
+    <main>
+        <section class="hero-section" aria-labelledby="hero-heading">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 id="hero-heading">Welcome to NITRO <span class="gradient-text">SSM</span><br><span class="sr-only"> - </span>Elevate Your Digital Career!</h1>
+                    <p>Strategic Growth Solutions for Modern Content Creators</p>
+                    <a href="http://www.instagram.com/bethenitro" class="cta-button" role="button">Start Growing</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657c4f101c7e51807bc63574_4886674-01.png" 
+                         alt="Illustration of creator collaboration">
                 </div>
             </div>
-            <div class="testimonial-card neo-box">
-                <p>"It’s like having a whole team behind me. From scheduling to fan engagement, everything just works. And yes, the growth on my private content has been without having to mention it everywhere."</p>
-                <div class="author-info">
-                    <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011.jpg" 
-                         alt="Content Producer">
-                    <h4>Lisa Rossen</h4>
+        </section>
+
+        <section class="content-section" aria-labelledby="challenges-heading">
+            <h2 id="challenges-heading" class="section-heading">Common Creator Challenges</h2>
+            <div class="challenges-grid">
+                <article class="neo-box challenge-card" aria-label="Audience Engagement">
+                    <h3>Audience Engagement</h3>
+                    <p>Time-consuming interactions & community management</p>
+                </article>
+                <article class="neo-box challenge-card" aria-label="Content Strategy">
+                    <h3>Content Strategy</h3>
+                    <p>Developing unique positioning in competitive markets</p>
+                </article>
+                <article class="neo-box challenge-card" aria-label="Privacy Control">
+                    <h3>Privacy Control</h3>
+                    <p>Maintaining personal boundaries & security</p>
+                </article>
+                <article class="neo-box challenge-card" aria-label="Platform Management">
+                    <h3>Platform Management</h3>
+                    <p>Juggling multiple channels effectively</p>
+                </article>
+                <article class="neo-box challenge-card" aria-label="Revenue Growth">
+                    <h3>Revenue Growth</h3>
+                    <p>Optimizing monetization strategies</p>
+                </article>
+                <article class="neo-box challenge-card" aria-label="Algorithm Changes">
+                    <h3>Algorithm Changes</h3>
+                    <p>Adapting to platform updates & visibility shifts</p>
+                </article>
+                <article class="neo-box challenge-card" aria-label="Brand Identity">
+                    <h3>Brand Identity</h3>
+                    <p>Developing unique market positioning</p>
+                </article>
+                <article class="neo-box challenge-card" aria-label="Work-Life Balance">
+                    <h3>Work-Life Balance</h3>
+                    <p>Maintaining sustainable workflows</p>
+                </article>
+                <article class="neo-box challenge-card" aria-label="Content Protection">
+                    <h3>Content Protection</h3>
+                    <p>Safeguarding exclusive material</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="content-section" aria-labelledby="stats-heading">
+            <h2 id="stats-heading" class="section-heading">Our Impact</h2>
+            <div class="stats-grid">
+                <div class="neo-box" role="region" aria-label="Monthly Engagements">
+                    <div class="stat-number">150K+</div>
+                    <p>Monthly Engagements</p>
+                </div>
+                <div class="neo-box" role="region" aria-label="Average Growth">
+                    <div class="stat-number">234%</div>
+                    <p>Average Growth</p>
+                </div>
+                <div class="neo-box" role="region" aria-label="Years of Experience">
+                    <div class="stat-number">4+</div>
+                    <p>Years Experience</p>
+                </div>
+                <div class="neo-box" role="region" aria-label="Creators Supported">
+                    <div class="stat-number">50+</div>
+                    <p>Creators Supported</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="content-section">
-        <h2 class="section-heading">Why Choose Nitro?</h2>
-        <div class="comparison-grid">
+        <section class="content-section" aria-labelledby="testimonials-heading">
+            <h2 id="testimonials-heading" class="section-heading">Success Stories</h2>
+            <div class="testimonial-carousel" role="region" aria-label="Testimonials Carousel">
+                <article class="testimonial-card neo-box" aria-label="Testimonial from Mia Marie">
+                    <blockquote>
+                        <p>"This platform helped me finally turn my content into a full-time income. My followers feel more connected than ever, and I don’t have to worry about the tech or strategy — it’s all handled."</p>
+                    </blockquote>
+                    <div class="author-info">
+                        <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e1ae263ba3262c30403_avatar.jpg" 
+                             alt="Portrait of Mia Marie">
+                        <h4>Mia Marie</h4>
+                    </div>
+                </article>
+                <article class="testimonial-card neo-box" aria-label="Testimonial from Lisa Rossen">
+                    <blockquote>
+                        <p>"It’s like having a whole team behind me. From scheduling to fan engagement, everything just works. And yes, the growth on my private content has been without having to mention it everywhere."</p>
+                    </blockquote>
+                    <div class="author-info">
+                        <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011.jpg" 
+                             alt="Portrait of Lisa Rossen">
+                        <h4>Lisa Rossen</h4>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="content-section" aria-labelledby="comparison-heading">
+            <h2 id="comparison-heading" class="section-heading">Why Choose Nitro?</h2>
+            <div class="comparison-grid">
+                <div class="neo-box" aria-label="Traditional Management Features">
+                    <h3>Traditional Management</h3>
+                    <ul>
+                        <li>Generic strategies</li>
+                        <li>Limited platform support</li>
+                        <li>Privacy concerns</li>
+                        <li>Revenue complexity</li>
+                    </ul>
+                </div>
+                <div class="neo-box" style="border: 2px solid var(--main-orange);" aria-label="Nitro SSM Features">
+                    <h3>Nitro SSM</h3>
+                    <ul>
+                        <li>Tailored growth plans</li>
+                        <li>Multi-platform expertise</li>
+                        <li>Content protection</li>
+                        <li>Transparent analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section final-cta" aria-labelledby="cta-heading">
             <div class="neo-box">
-                <h3>Traditional Management</h3>
-                <ul>
-                    <li>Generic strategies</li>
-                    <li>Limited platform support</li>
-                    <li>Privacy concerns</li>
-                    <li>Revenue complexity</li>
-                </ul>
+                <h2 id="cta-heading">Join Our Creator Network</h2>
+                <p>Elevate your digital career with strategic support</p>
+                <a href="http://www.instagram.com/bethenitro" class="cta-button" role="button">Apply Now</a>
             </div>
-            <div class="neo-box" style="border: 2px solid var(--main-orange);">
-                <h3>Nitro SSM</h3>
-                <ul>
-                    <li>Tailored growth plans</li>
-                    <li>Multi-platform expertise</li>
-                    <li>Content protection</li>
-                    <li>Transparent analytics</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="content-section final-cta">
-        <div class="neo-box">
-            <h2>Join Our Creator Network</h2>
-            <p>Elevate your digital career with strategic support</p>
-            <a href="http://www.instagram.com/bethenitro" class="cta-button">Apply Now</a>
-        </div>
-    </section>
-
-    <footer>
+    <footer role="contentinfo">
         <p>© 2025 NITRO SSM. Empowering Digital Creators Worldwide.</p>
     </footer>
 </body>
