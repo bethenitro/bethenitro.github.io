@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NITRO SSM - Premium Creator Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         /* No visual changes here; WCAG improvements are in HTML content */
         /* For brevity, CSS remains unchanged; in production, also ensure high contrast and adequate color pairing */
@@ -94,26 +95,58 @@ body::before {
         }
 
         .neo-box:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.23);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 26px 0 rgba(31, 38, 135, 0.18);
         }
 
         .nav-container {
-            padding: 1rem 5%;
+            padding: 0.75rem 5%;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 1000;
-            background: rgba(4,6,4,1);
+            background: rgba(4,6,4,0.98);
             display: flex;
             align-items: center;
-            height: 80px;
+            justify-content: space-between;
+            height: 76px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
         .logo {
-            height: 110px;
+            height: 64px;
             width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--pure-white);
+        }
+
+        .nav-cta {
+            padding: 0.65rem 1.4rem;
+            border-radius: 999px;
+            background: linear-gradient(45deg, var(--main-orange), var(--accent-blue));
+            color: var(--pure-white) !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
 
         .hero-section {
@@ -126,7 +159,10 @@ body::before {
                 height: 60px;
             }
             .logo {
-                height: 40px;
+                height: 36px;
+            }
+            .nav-links {
+                display: none;
             }
             .hero-section {
                 margin-top: 60px;
@@ -158,15 +194,15 @@ body::before {
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.15;
-            margin-bottom: 2rem;
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
             font-weight: 700;
         }
 
         .hero-text p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
             color: var(--text-gray);
         }
 
@@ -201,7 +237,7 @@ body::before {
         }
 
         .content-section {
-            padding: 2rem 5% !important;
+            padding: 3rem 5% !important;
         }
 
         .section-heading {
@@ -284,6 +320,60 @@ body::before {
             gap: 2rem;
         }
 
+        /* Video testimonials grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            align-items: start;
+            padding: 1rem 0 3rem;
+        }
+
+        .video-card {
+            background: rgba(255,255,255,0.04);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+        }
+
+        .video-card video {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            background: black;
+        }
+
+        .video-card figcaption {
+            margin-top: 0.75rem;
+            font-weight: 600;
+            color: var(--text-gray);
+        }
+
+        /* Results / gallery */
+        .results-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            align-items: start;
+            padding: 1rem 0 3rem;
+        }
+
+        .result-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius: 14px;
+            padding: 0.5rem;
+            text-align: center;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+        }
+
+        .result-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
         .testimonial-card {
             flex: 0 0 80%;
             scroll-snap-align: start;
@@ -335,6 +425,24 @@ body::before {
             margin-top: 2rem;
         }
 
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--pure-white);
+        }
+
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -344,6 +452,213 @@ body::before {
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ===== MIA MARIE SPOTLIGHT ===== */
+        .mia-section {
+            background: linear-gradient(135deg, rgba(255,102,0,0.07) 0%, rgba(0,115,255,0.07) 100%);
+            border-top: 1px solid rgba(255,102,0,0.2);
+            border-bottom: 1px solid rgba(0,115,255,0.2);
+        }
+
+        .mia-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mia-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--main-orange), var(--accent-blue));
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0.35rem 1.2rem;
+            border-radius: 999px;
+            margin-bottom: 1.2rem;
+        }
+
+        .mia-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .mia-introducing {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+        }
+
+        .mia-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .mia-sub {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .mia-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            align-items: start;
+        }
+
+        .mia-img-card {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .mia-img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .mia-img-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .mia-img-large {
+            grid-row: span 1;
+        }
+
+        .mia-img-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8), transparent);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 1rem 0.75rem 0.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .mia-quote {
+            background: rgba(255,255,255,0.04);
+            border-left: 4px solid var(--main-orange);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            text-align: left;
+            margin: 0 auto 2rem;
+            max-width: 800px;
+            font-style: italic;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .mia-quote footer {
+            margin-top: 0.75rem;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--main-orange);
+            background: none;
+            padding: 0;
+        }
+
+        .mia-cta {
+            background: linear-gradient(45deg, var(--main-orange), var(--accent-blue));
+        }
+
+        /* ===== MOBILE IMPROVEMENTS ===== */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-text p {
+                font-size: 1rem;
+            }
+            .section-heading {
+                font-size: 1.6rem;
+            }
+            .stat-number {
+                font-size: 2.4rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            /* horizontal scroll for testimonial + dashboard video grids */
+            .video-scroll {
+                display: flex !important;
+                flex-direction: row;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                gap: 1rem;
+                padding-bottom: 1rem;
+                /* pull to full width past section padding */
+                margin-left: -4%;
+                margin-right: -4%;
+                padding-left: 4%;
+                padding-right: 4%;
+            }
+
+            .video-scroll .video-card {
+                flex: 0 0 78vw;
+                max-width: 78vw;
+                scroll-snap-align: start;
+                margin: 0;
+            }
+
+            /* thin scrollbar for the scroll rows */
+            .video-scroll::-webkit-scrollbar {
+                height: 4px;
+            }
+            .video-scroll::-webkit-scrollbar-track {
+                background: rgba(255,255,255,0.08);
+                border-radius: 2px;
+            }
+            .video-scroll::-webkit-scrollbar-thumb {
+                background: var(--main-orange);
+                border-radius: 2px;
+            }
+
+            .results-gallery {
+                grid-template-columns: 1fr;
+            }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                padding: 1.5rem 0;
+            }
+            .mia-gallery {
+                grid-template-columns: 1fr;
+            }
+            .mia-name {
+                font-size: 2.4rem;
+            }
+            .mia-quote {
+                padding: 1rem 1.2rem;
+            }
+            .cta-button {
+                padding: 0.85rem 1.8rem;
+                font-size: 0.85rem;
+            }
+            .content-section {
+                padding: 2rem 4% !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -351,6 +666,13 @@ body::before {
         <img class="logo" 
              src="https://drive.google.com/thumbnail?id=1Emnk79HUkQZ84UhZYol6HVCmCvRHuuN8&sz=w1000" 
              alt="Nitro Creator Management Logo">
+        <div class="nav-links" aria-label="Primary">
+            <a href="#services">Services</a>
+            <a href="#testimonials-heading">Testimonials</a>
+            <a href="#results-heading">Results</a>
+            <a href="#comparison-heading">Why Nitro</a>
+            <a class="nav-cta" href="mailto:bethenitro@gmail.com">Apply</a>
+        </div>
     </nav>
 
     <main>
@@ -359,7 +681,7 @@ body::before {
                 <div class="hero-text">
                     <h1 id="hero-heading">Welcome to NITRO <span class="gradient-text">SSM</span><br><span class="sr-only"> - </span>Elevate Your Digital Career!</h1>
                     <p>Strategic Growth Solutions for Modern Content Creators</p>
-                    <a href="http://www.instagram.com/bethenitro" class="cta-button" role="button">Start Growing</a>
+                    <a href="mailto:bethenitro@gmail.com" class="cta-button" role="button">Start Growing</a>
                 </div>
                 <div class="hero-image">
                     <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657c4f101c7e51807bc63574_4886674-01.png" 
@@ -368,7 +690,39 @@ body::before {
             </div>
         </section>
 
-        <section class="content-section" aria-labelledby="challenges-heading">
+        <!-- ===== MIA MARIE SPOTLIGHT ===== -->
+        <section class="content-section mia-section" aria-labelledby="mia-heading" id="mia-marie">
+            <div class="mia-inner">
+                <div class="mia-badge">FEATURED MODEL</div>
+                <h2 id="mia-heading" class="mia-title">
+                    <span class="mia-introducing">THE SENSATIONAL</span>
+                    <span class="mia-name"><span style="color:var(--main-orange)">MIA</span> <span style="color:var(--accent-blue)">MARIE</span></span>
+                </h2>
+                <p class="mia-sub">Miami, Florida &nbsp;·&nbsp; @miaxomarie123 &nbsp;·&nbsp; Model &amp; Exclusive Content Creator</p>
+
+                <div class="mia-gallery">
+                    <div class="mia-img-card">
+                        <img src="3.png" alt="Mia Marie introducing photo">
+                    </div>
+                    <div class="mia-img-card mia-img-large">
+                        <img src="1.png" alt="Mia Marie promotional photo">
+                    </div>
+                    <div class="mia-img-card">
+                        <img src="results%20post.png" alt="Mia Marie results — before and after 1 month">
+                        <div class="mia-img-label">1 Month Results</div>
+                    </div>
+                </div>
+
+                <blockquote class="mia-quote">
+                    <p>"Thanks to Nitro, my Instagram and overall social media presence have skyrocketed, and my OnlyFans journey has been nothing short of amazing. They've not only boosted my follower counts but also significantly increased my earnings. I couldn't have asked for a better partner in this venture. Nitro is the real deal!"</p>
+                    <footer>— Mia Marie</footer>
+                </blockquote>
+
+                <a href="mailto:bethenitro@gmail.com" class="cta-button mia-cta" role="button">Work With Us Like Mia</a>
+            </div>
+        </section>
+
+        <section class="content-section" aria-labelledby="challenges-heading" id="services">
             <h2 id="challenges-heading" class="section-heading">Common Creator Challenges</h2>
             <div class="challenges-grid">
                 <article class="neo-box challenge-card" aria-label="Audience Engagement">
@@ -433,28 +787,76 @@ body::before {
         </section>
 
         <section class="content-section" aria-labelledby="testimonials-heading">
-            <h2 id="testimonials-heading" class="section-heading">Success Stories</h2>
-            <div class="testimonial-carousel" role="region" aria-label="Testimonials Carousel">
-                <article class="testimonial-card neo-box" aria-label="Testimonial from Mia Marie">
-                    <blockquote>
-                        <p>"This platform helped me finally turn my content into a full-time income. My followers feel more connected than ever, and I don’t have to worry about the tech or strategy — it’s all handled."</p>
-                    </blockquote>
-                    <div class="author-info">
-                        <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e1ae263ba3262c30403_avatar.jpg" 
-                             alt="Portrait of Mia Marie">
-                        <h4>Mia Marie</h4>
-                    </div>
-                </article>
-                <article class="testimonial-card neo-box" aria-label="Testimonial from Lisa Rossen">
-                    <blockquote>
-                        <p>"It’s like having a whole team behind me. From scheduling to fan engagement, everything just works. And yes, the growth on my private content has been without having to mention it everywhere."</p>
-                    </blockquote>
-                    <div class="author-info">
-                        <img src="https://assets-global.website-files.com/657c4988cc0a767e248ed997/657d0e93a0fbf5e81c3f8f51_IMG_3011.jpg" 
-                             alt="Portrait of Lisa Rossen">
-                        <h4>Lisa Rossen</h4>
-                    </div>
-                </article>
+            <h2 id="testimonials-heading" class="section-heading">Creator Testimonials</h2>
+            <p style="text-align:center;color:var(--text-gray);max-width:900px;margin:0.5rem auto 1.5rem;">Real creators, real results — short clips from creators we supported. Tap to play.</p>
+            <div class="video-grid video-scroll" role="region" aria-label="Video Testimonials">
+                <figure class="video-card neo-box" aria-label="Mia Marie video testimonial">
+                    <video controls playsinline preload="metadata" src="testimonial/mia%20marie.mp4" aria-label="Video testimonial from Mia Marie"></video>
+                    <figcaption>Mia Marie</figcaption>
+                </figure>
+
+                <figure class="video-card neo-box" aria-label="Dana video testimonial">
+                    <video controls playsinline preload="metadata" src="testimonial/Dana.mp4" aria-label="Video testimonial from Dana"></video>
+                    <figcaption>Dana</figcaption>
+                </figure>
+
+                <figure class="video-card neo-box" aria-label="Hotmommy video testimonial">
+                    <video controls playsinline preload="metadata" src="testimonial/hotmommy.mp4" aria-label="Video testimonial from Hotmommy"></video>
+                    <figcaption>HotMommy</figcaption>
+                </figure>
+
+                <figure class="video-card neo-box" aria-label="Raven video testimonial">
+                    <video controls playsinline preload="metadata" src="testimonial/Raven.mp4" aria-label="Video testimonial from Raven"></video>
+                    <figcaption>Raven</figcaption>
+                </figure>
+
+                <figure class="video-card neo-box" aria-label="Jolien video testimonial">
+                    <video controls playsinline preload="metadata" src="testimonial/Jolien.mp4" aria-label="Video testimonial from Jolien"></video>
+                    <figcaption>Jolien</figcaption>
+                </figure>
+
+                <figure class="video-card neo-box" aria-label="Diana Revo video testimonial">
+                    <video controls playsinline preload="auto" aria-label="Video testimonial from Diana Revo">
+                        <source src="testimonial/Diana Revo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <figcaption>Diana Revo</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="content-section" aria-labelledby="results-heading">
+            <h2 id="results-heading" class="section-heading">Proven Results</h2>
+            <p style="text-align:center;color:var(--text-gray);max-width:900px;margin:0.5rem auto 1.5rem;">Before &amp; after performance screenshots from creator dashboards. Real revenue and message growth after working with Nitro.</p>
+
+            <div class="results-gallery" role="region" aria-label="Results Gallery">
+                <div class="result-card neo-box">
+                    <img src="dashboard%20snapshot/367680626_658115446281602_5390485897584958421_n.jpg" alt="Dashboard snapshot showing earnings growth">
+                </div>
+                <div class="result-card neo-box">
+                    <img src="dashboard%20snapshot/photo_2023-11-24_09-30-13.jpg" alt="Dashboard snapshot showing revenue metrics">
+                </div>
+                <div class="result-card neo-box">
+                    <img src="dashboard%20snapshot/395092357_286646740992073_4409939865369546701_n.webp" alt="Dashboard snapshot showing subscriber growth">
+                </div>
+            </div>
+
+            <div class="video-grid video-scroll" role="region" aria-label="Dashboard Video Snapshots">
+                <figure class="video-card neo-box">
+                    <video controls playsinline preload="metadata" aria-label="Dashboard video snapshot 1">
+                        <source src="dashboard%20snapshot/4C4D9DF4E7FDE65CADE4FF3031CA02B0_video_dashinit.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="video-card neo-box">
+                    <video controls playsinline preload="metadata" aria-label="Dashboard video snapshot 2">
+                        <source src="dashboard%20snapshot/81474990805A26AE6AA5EE6658687EAA_video_dashinit.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="video-card neo-box">
+                    <video controls playsinline preload="metadata" aria-label="Dashboard video snapshot 3">
+                        <source src="dashboard%20snapshot/CC49A59B7A40D32A85EE234055CB92B3_video_dashinit.mp4" type="video/mp4">
+                    </video>
+                </figure>
             </div>
         </section>
 
@@ -486,13 +888,20 @@ body::before {
             <div class="neo-box">
                 <h2 id="cta-heading">Join Our Creator Network</h2>
                 <p>Elevate your digital career with strategic support</p>
-                <a href="http://www.instagram.com/bethenitro" class="cta-button" role="button">Apply Now</a>
+                <a href="mailto:bethenitro@gmail.com" class="cta-button" role="button">Apply Now</a>
             </div>
         </section>
     </main>
 
     <footer role="contentinfo">
-        <p>© 2025 NITRO SSM. Empowering Digital Creators Worldwide.</p>
+        <p>© 2026 NITRO SSM. Empowering Digital Creators Worldwide.</p>
+        <div class="footer-links" aria-label="Footer Links">
+            <a href="#services">Services</a>
+            <a href="#testimonials-heading">Testimonials</a>
+            <a href="#results-heading">Results</a>
+            <a href="mailto:bethenitro@gmail.com">Contact</a>
+            <a href="#comparison-heading">Why Nitro</a>
+        </div>
     </footer>
 </body>
 </html>
